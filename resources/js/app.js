@@ -186,7 +186,7 @@ const setupCopyButtons = () => {
                 const label = button.querySelector('[data-copy-label]');
                 if (label) {
                     const original = label.textContent;
-                    label.textContent = 'Copied!';
+                    label.textContent = 'Copied';
                     setTimeout(() => {
                         label.textContent = original;
                     }, 1500);

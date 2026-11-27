@@ -1,22 +1,21 @@
 <x-layouts.app title="Cyber Lab & CTF Arena" :user="$learner">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-5 border-b vlx-border">
         <div>
-            <span class="font-mono text-xs uppercase tracking-wider text-primary-600 dark:text-primary-400">Isolated Practical Environment</span>
-            <h1 class="text-2xl font-bold text-gray-900 dark:text-white mt-1">Cyber Lab &amp; CTF Sandbox</h1>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Praktik eksploitasi dan hardening aman pada lingkungan container terisolasi.</p>
+            <span class="text-xs font-mono vlx-text-muted">Sandbox</span>
+            <h1 class="text-2xl sm:text-[28px] font-medium tracking-[-0.02em] vlx-text-primary mt-1">Cyber Lab &amp; CTF Sandbox</h1>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
             <a
                 href="{{ route('labs.index') }}"
-                class="rounded-lg px-3 py-1.5 text-xs font-mono font-semibold {{ $selectedCategory === '' ? 'bg-primary-500 text-gray-950' : 'border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300' }}"
+                class="rounded-lg px-3 h-8 inline-flex items-center text-xs font-medium {{ $selectedCategory === '' ? 'bg-gray-900 text-white dark:bg-[#eef0f5] dark:text-[#0b0d14]' : 'border vlx-border vlx-surface-raised vlx-text-secondary hover:vlx-text-primary' }}"
             >
-                All Labs
+                All labs
             </a>
             @foreach ($categories as $category)
                 <a
                     href="{{ route('labs.index', ['category' => $category]) }}"
-                    class="rounded-lg px-3 py-1.5 text-xs font-mono font-semibold {{ $selectedCategory === $category ? 'bg-primary-500 text-gray-950' : 'border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300' }}"
+                    class="rounded-lg px-3 h-8 inline-flex items-center text-xs font-medium {{ $selectedCategory === $category ? 'bg-gray-900 text-white dark:bg-[#eef0f5] dark:text-[#0b0d14]' : 'border vlx-border vlx-surface-raised vlx-text-secondary hover:vlx-text-primary' }}"
                 >
                     {{ $category }}
                 </a>
@@ -25,17 +24,17 @@
     </div>
 
     @if ($errors->any())
-        <div class="mb-6 rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-600 dark:text-rose-300">
+        <div class="rounded-xl border border-rose-500/25 bg-rose-500/8 p-4 text-sm text-rose-700 dark:text-rose-300">
             {{ $errors->first() }}
         </div>
     @endif
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         @forelse ($labs as $lab)
             @php
                 $session = $activeSessions->get($lab->id);
             @endphp
-            <div class="space-y-2">
+            <div class="space-y-2.5">
                 <x-velinux.cyber-lab-card
                     :lab="$lab"
                     :is-solved="in_array($lab->id, $solvedLabIds, true)"
@@ -43,13 +42,13 @@
                     :show-submission-form="true"
                 />
 
-                <div class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs dark:border-gray-800 dark:bg-gray-900">
+                <div class="flex items-center justify-between rounded-xl border vlx-border vlx-surface-card px-4 py-2.5 text-xs">
                     @if ($session)
-                        <span class="font-mono text-amber-600 dark:text-amber-400">
+                        <span class="font-mono tabular-nums text-amber-700 dark:text-amber-300">
                             Container: {{ $session->container_id }} &middot; Exp {{ $session->expires_at->diffForHumans() }}
                         </span>
                     @else
-                        <span class="font-mono text-gray-500 dark:text-gray-400">
+                        <span class="font-mono tabular-nums vlx-text-muted">
                             Durasi sesi: {{ $lab->time_limit_minutes }} menit (terisolasi)
                         </span>
                     @endif
@@ -58,54 +57,54 @@
                         @csrf
                         <button
                             type="submit"
-                            class="rounded-lg border border-primary-500/40 bg-primary-500/10 px-3 py-1 font-mono font-semibold text-primary-700 dark:text-primary-300 hover:bg-primary-500/20 cursor-pointer"
+                            class="rounded-lg border vlx-border vlx-surface-raised px-3 h-8 font-mono text-xs font-medium vlx-text-primary hover:vlx-border-strong active:scale-[0.98] transition-[border-color,transform] duration-150 cursor-pointer"
                         >
-                            {{ $session ? 'Session Aktif' : 'Launch Sandbox' }}
+                            {{ $session ? 'Session aktif' : 'Launch sandbox' }}
                         </button>
                     </form>
                 </div>
             </div>
         @empty
-            <div class="col-span-full rounded-xl border border-dashed border-gray-300 dark:border-gray-700 p-8 text-center text-sm text-gray-500 dark:text-gray-400">
+            <div class="col-span-full rounded-xl border vlx-border vlx-surface-card p-8 text-center text-sm vlx-text-muted">
                 Belum ada lab challenge aktif.
             </div>
         @endforelse
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <section id="submissions" class="lg:col-span-2 rounded-xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-900">
-            <h2 class="text-base font-semibold text-gray-900 dark:text-white mb-4">Riwayat Flag Submission</h2>
+        <section id="submissions" class="lg:col-span-2 rounded-xl border vlx-border vlx-surface-card p-6">
+            <h2 class="text-base font-medium vlx-text-primary mb-4">Riwayat flag submission</h2>
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs">
-                    <thead class="bg-gray-50 font-mono uppercase text-gray-500 dark:bg-gray-950/60 dark:text-gray-400">
+                    <thead class="vlx-surface-raised font-mono vlx-text-muted border-b vlx-border">
                         <tr>
-                            <th class="px-3 py-2.5">Lab</th>
-                            <th class="px-3 py-2.5">Submitted Flag</th>
-                            <th class="px-3 py-2.5">Status</th>
-                            <th class="px-3 py-2.5 text-right">Waktu</th>
+                            <th class="px-3 py-2.5 font-medium">Lab</th>
+                            <th class="px-3 py-2.5 font-medium">Submitted flag</th>
+                            <th class="px-3 py-2.5 font-medium">Status</th>
+                            <th class="px-3 py-2.5 text-right font-medium">Waktu</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                    <tbody class="divide-y divide-black/6 dark:divide-white/8">
                         @forelse ($recentSubmissions as $submission)
                             <tr>
-                                <td class="px-3 py-2.5 font-medium text-gray-900 dark:text-white">
+                                <td class="px-3 py-3 font-medium vlx-text-primary">
                                     {{ $submission->labChallenge?->title ?? 'Lab' }}
                                 </td>
-                                <td class="px-3 py-2.5 font-mono text-gray-600 dark:text-gray-300">
+                                <td class="px-3 py-3 font-mono vlx-text-secondary">
                                     {{ $submission->submitted_flag }}
                                 </td>
-                                <td class="px-3 py-2.5">
-                                    <span class="rounded px-2 py-0.5 font-mono font-semibold {{ $submission->is_correct ? 'bg-primary-500/15 text-primary-600 dark:text-primary-400' : 'bg-rose-500/15 text-rose-600 dark:text-rose-400' }}">
-                                        {{ $submission->is_correct ? 'VERIFIED' : 'INVALID' }}
+                                <td class="px-3 py-3">
+                                    <span class="rounded px-2 py-0.5 font-mono {{ $submission->is_correct ? 'text-emerald-700 dark:text-[#4cc38a] bg-emerald-500/8' : 'text-rose-700 dark:text-rose-300 bg-rose-500/8' }}">
+                                        {{ $submission->is_correct ? 'Verified' : 'Invalid' }}
                                     </span>
                                 </td>
-                                <td class="px-3 py-2.5 text-right text-gray-500 dark:text-gray-400">
+                                <td class="px-3 py-3 text-right vlx-text-muted">
                                     {{ $submission->created_at?->diffForHumans() }}
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="px-3 py-6 text-center text-gray-500 dark:text-gray-400">
+                                <td colspan="4" class="px-3 py-6 text-center vlx-text-muted">
                                     Belum ada riwayat submit flag.
                                 </td>
                             </tr>
@@ -115,12 +114,12 @@
             </div>
         </section>
 
-        <section id="lab-rules" class="rounded-xl border border-amber-500/30 bg-amber-500/5 p-5">
-            <h2 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Etika &amp; Batasan Cyber Lab</h2>
-            <ul class="space-y-2 text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
-                <li>1. Seluruh praktik dijalankan di dalam container/sandbox terisolasi dengan batas resource.</li>
-                <li>2. Dilarang mengarahkan tool enumerasi atau eksploitasi ke target publik di luar lingkungan simulasi VELINUX.</li>
-                <li>3. Setiap aktivitas sesi dan pengumpulan flag tercatat pada audit log platform.</li>
+        <section id="lab-rules" class="rounded-xl border vlx-border vlx-surface-card p-5 h-fit">
+            <h2 class="text-base font-medium vlx-text-primary mb-3">Aturan Lab</h2>
+            <ul class="space-y-2 text-xs vlx-text-secondary">
+                <li>1. Container terisolasi &amp; berbatas waktu.</li>
+                <li>2. Hanya uji target simulasi VELINUX.</li>
+                <li>3. Aktivitas sesi tercatat pada audit log.</li>
             </ul>
         </section>
     </div>

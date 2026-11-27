@@ -25,8 +25,8 @@ class DashboardController extends Controller
         $courses = Course::query()
             ->published()
             ->withCount('modules')
-            ->latest('id')
-            ->limit(6)
+            ->oldest('id')
+            ->limit(3)
             ->get();
 
         $enrollmentsByCourse = collect();
@@ -75,12 +75,12 @@ class DashboardController extends Controller
             ->published()
             ->withCount('questions')
             ->orderByDesc('is_daily')
-            ->limit(2)
+            ->limit(1)
             ->get();
 
         $featuredLabs = LabChallenge::query()
             ->active()
-            ->limit(3)
+            ->limit(2)
             ->get();
 
         $leaders = User::query()

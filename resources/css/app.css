@@ -6,7 +6,7 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Plus Jakarta Sans', 'Inter', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
         'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
         'Courier New', monospace;
@@ -24,11 +24,72 @@
     --color-primary-950: oklch(0.262 0.051 172.552);
 }
 
+:root {
+    --vlx-deep: #f1f4f8;
+    --vlx-page: #f5f7fa;
+    --vlx-card: #ffffff;
+    --vlx-raised: #eceff4;
+    --vlx-border: rgba(17, 24, 39, 0.08);
+    --vlx-border-strong: rgba(17, 24, 39, 0.14);
+    --vlx-text: #111827;
+    --vlx-text-secondary: #4b5565;
+    --vlx-text-muted: #6b7487;
+    --vlx-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark {
+    --vlx-deep: #07080d;
+    --vlx-page: #0b0d14;
+    --vlx-card: #11141c;
+    --vlx-raised: #1a1e28;
+    --vlx-border: rgba(238, 240, 245, 0.08);
+    --vlx-border-strong: rgba(238, 240, 245, 0.14);
+    --vlx-text: #eef0f5;
+    --vlx-text-secondary: #a3a9b8;
+    --vlx-text-muted: #7a8296;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--vlx-page);
+        color: var(--vlx-text);
+        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    }
+}
+
 @layer utilities {
-    .velinux-grid-bg {
-        background-image:
-            linear-gradient(to right, rgb(16 185 129 / 0.06) 1px, transparent 1px),
-            linear-gradient(to bottom, rgb(16 185 129 / 0.06) 1px, transparent 1px);
-        background-size: 28px 28px;
+    .vlx-surface-deep {
+        background-color: var(--vlx-deep);
+    }
+    .vlx-surface-page {
+        background-color: var(--vlx-page);
+    }
+    .vlx-surface-card {
+        background-color: var(--vlx-card);
+    }
+    .vlx-surface-raised {
+        background-color: var(--vlx-raised);
+    }
+    .vlx-border {
+        border-color: var(--vlx-border);
+    }
+    .vlx-border-strong {
+        border-color: var(--vlx-border-strong);
+    }
+    .vlx-text-primary {
+        color: var(--vlx-text);
+    }
+    .vlx-text-secondary {
+        color: var(--vlx-text-secondary);
+    }
+    .vlx-text-muted {
+        color: var(--vlx-text-muted);
+    }
+    .vlx-ease {
+        transition-timing-function: var(--vlx-ease);
     }
 }

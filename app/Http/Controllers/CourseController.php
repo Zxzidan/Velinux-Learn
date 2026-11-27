@@ -149,6 +149,6 @@ class CourseController extends Controller
             ->route('courses.show', ['course' => $course, 'lesson' => $lesson->slug])
             ->with('status', $alreadyCompleted
                 ? 'Materi ini sudah Anda selesaikan sebelumnya.'
-                : "Materi selesai! Anda memperoleh +{$lesson->xp_reward} XP.");
+                : "Materi selesai. Anda memperoleh +{$lesson->xp_reward} XP.");
     }
 }

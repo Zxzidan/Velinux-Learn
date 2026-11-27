@@ -22,10 +22,10 @@ enum AssessmentStatus: string
     public function badgeClasses(): string
     {
         return match ($this) {
-            self::Pending => 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 border border-gray-500/30',
-            self::Evaluated => 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-500/30',
-            self::NeedsReview => 'bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300 border border-amber-500/30',
-            self::Approved => 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/70 dark:text-cyan-300 border border-cyan-500/30',
+            self::Pending => 'text-slate-600 dark:text-[#a3a9b8] bg-slate-500/8 border border-slate-500/15 dark:border-white/10',
+            self::Evaluated => 'text-emerald-700 dark:text-[#4cc38a] bg-emerald-500/8 border border-emerald-600/15 dark:border-[#4cc38a]/20',
+            self::NeedsReview => 'text-amber-700 dark:text-amber-300 bg-amber-500/8 border border-amber-500/20',
+            self::Approved => 'text-emerald-800 dark:text-[#4cc38a] bg-emerald-500/10 border border-emerald-600/20 dark:border-[#4cc38a]/25',
         };
     }
 }

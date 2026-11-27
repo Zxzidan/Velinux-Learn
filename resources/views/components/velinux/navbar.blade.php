@@ -15,28 +15,28 @@
         ->implode('');
 @endphp
 
-<nav class="bg-white/95 backdrop-blur-md border-b border-gray-200 px-4 sm:px-6 py-3 dark:bg-gray-900/95 dark:border-gray-800 fixed left-0 right-0 top-0 z-50 transition-colors duration-200">
-    <div class="flex flex-wrap justify-between items-center gap-3">
-        <div class="flex justify-start items-center gap-3">
+<nav class="vlx-surface-deep border-b vlx-border px-4 sm:px-6 h-16 flex items-center fixed left-0 right-0 top-0 z-50 transition-colors duration-150 vlx-ease">
+    <div class="flex w-full justify-between items-center gap-4">
+        <div class="flex items-center gap-3 min-w-0">
             <button
                 type="button"
                 data-drawer-target="drawer-navigation"
                 data-drawer-toggle="drawer-navigation"
                 aria-controls="drawer-navigation"
                 aria-expanded="false"
-                class="p-2 text-gray-600 rounded-lg cursor-pointer md:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-800 focus:ring-2 focus:ring-primary-500/40 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                class="p-2 rounded-lg cursor-pointer md:hidden vlx-text-muted hover:vlx-text-primary hover:bg-black/5 dark:hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 transition-colors duration-150"
             >
-                <svg data-drawer-icon aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                <svg data-drawer-icon aria-hidden="true" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
                 </svg>
-                <svg data-drawer-icon aria-hidden="true" class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                <svg data-drawer-icon aria-hidden="true" class="hidden w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
             </button>
 
-            <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 mr-2">
-                <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white p-1 border border-gray-200 dark:border-primary-500/40 shadow-xs">
+            <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 shrink-0">
+                <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1 border vlx-border">
                     <img
                         src="{{ asset('images/velinux-logo.png') }}"
                         alt="Logo VELINUX"
@@ -44,17 +44,17 @@
                     />
                 </span>
                 <span class="flex flex-col leading-none">
-                    <span class="text-lg font-bold tracking-wider text-gray-900 dark:text-white">VELINUX</span>
-                    <span class="text-[10px] font-mono uppercase tracking-widest text-primary-600 dark:text-primary-400">Cybersec LMS</span>
+                    <span class="text-base font-semibold tracking-tight vlx-text-primary">VELINUX</span>
+                    <span class="text-[11px] vlx-text-muted mt-0.5">Cybersecurity LMS</span>
                 </span>
             </a>
 
-            <form action="{{ route('courses.index') }}" method="GET" class="hidden md:block md:pl-2">
+            <form action="{{ route('courses.index') }}" method="GET" class="hidden md:block ml-2">
                 <label for="topbar-search" class="sr-only">Search</label>
-                <div class="relative md:w-72 lg:w-96">
+                <div class="relative w-64 lg:w-80">
                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"></path>
+                        <svg class="w-4 h-4 vlx-text-muted" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"></path>
                         </svg>
                     </div>
                     <input
@@ -62,34 +62,32 @@
                         name="q"
                         value="{{ request('q') }}"
                         id="topbar-search"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 py-2 pr-3 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Search modules, labs, or CTF..."
+                        class="vlx-surface-raised border vlx-border vlx-text-primary placeholder:text-gray-400 dark:placeholder:text-[#7a8296] text-sm rounded-lg focus:outline-none focus:border-emerald-600 dark:focus:border-[#4cc38a] block w-full h-9 pl-9 pr-3 transition-colors duration-150"
+                        placeholder="Search"
                     />
                 </div>
             </form>
         </div>
 
-        <div class="flex items-center gap-2 sm:gap-2.5 lg:order-2">
-            <span class="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-primary-500/30 bg-primary-500/10 px-2.5 py-1.5 text-xs font-mono font-semibold text-primary-700 dark:text-primary-300">
-                <span class="h-1.5 w-1.5 rounded-full bg-primary-500 animate-pulse"></span>
+        <div class="flex items-center gap-2 shrink-0">
+            <span class="hidden sm:inline-flex items-center rounded-lg border vlx-border vlx-surface-raised px-2.5 h-8 text-xs font-mono tabular-nums font-medium vlx-text-secondary">
                 {{ $displayXp }} XP
             </span>
 
-            <!-- Light / Dark Theme Toggle -->
             <button
                 type="button"
                 data-theme-toggle
                 aria-label="Ganti tema terang atau gelap"
                 title="Ganti tema terang / gelap"
-                class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:border-primary-500/40 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition cursor-pointer"
+                class="inline-flex items-center gap-2 rounded-lg border vlx-border vlx-surface-raised px-2.5 h-8 text-xs font-medium vlx-text-secondary hover:vlx-text-primary active:scale-[0.98] transition-[color,background-color,transform] duration-150 vlx-ease cursor-pointer"
             >
-                <svg data-theme-icon="light" class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+                <svg data-theme-icon="light" class="w-4 h-4 vlx-text-muted" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"></path>
                 </svg>
-                <svg data-theme-icon="dark" class="hidden w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                <svg data-theme-icon="dark" class="hidden w-4 h-4 vlx-text-muted" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path>
                 </svg>
-                <span data-theme-label class="hidden lg:inline font-mono text-[11px]">Light</span>
+                <span data-theme-label class="hidden lg:inline">Mode terang</span>
             </button>
 
             <button
@@ -97,11 +95,11 @@
                 data-drawer-toggle="drawer-navigation"
                 data-focus-search
                 aria-controls="drawer-navigation"
-                class="p-2 text-gray-500 rounded-lg md:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 focus:ring-2 focus:ring-primary-500/40"
+                class="p-2 rounded-lg md:hidden vlx-text-muted hover:vlx-text-primary hover:bg-black/5 dark:hover:bg-white/5"
             >
                 <span class="sr-only">Toggle search</span>
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path clip-rule="evenodd" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"></path>
+                <svg aria-hidden="true" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"></path>
                 </svg>
             </button>
 
@@ -111,113 +109,89 @@
                     type="button"
                     data-dropdown-toggle="notification-dropdown"
                     aria-expanded="false"
-                    class="relative p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 focus:ring-2 focus:ring-primary-500/40 cursor-pointer"
+                    class="relative inline-flex items-center justify-center h-8 w-8 rounded-lg vlx-text-muted hover:vlx-text-primary hover:bg-black/5 dark:hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 transition-colors duration-150 cursor-pointer"
                 >
-                    <span class="sr-only">View notifications</span>
-                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                    <span class="sr-only">Notifications</span>
+                    <svg aria-hidden="true" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"></path>
                     </svg>
                     @if (count($notifications) > 0)
-                        <span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-primary-500"></span>
+                        <span class="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-[#4cc38a]"></span>
                     @endif
                 </button>
 
                 <div
-                    class="hidden absolute right-0 top-full mt-2 w-80 sm:w-96 overflow-hidden z-50 text-base list-none bg-white divide-y divide-gray-100 shadow-xl border border-gray-200 dark:divide-gray-700 dark:bg-gray-800 dark:border-gray-700 rounded-xl"
+                    class="hidden absolute right-0 top-full mt-2 w-80 sm:w-96 overflow-hidden z-50 list-none vlx-surface-card divide-y divide-black/6 dark:divide-white/8 shadow-lg border vlx-border rounded-xl"
                     id="notification-dropdown"
                 >
-                    <div class="block py-2.5 px-4 text-sm font-semibold text-center text-gray-700 bg-gray-50 dark:bg-gray-900 dark:text-gray-200">
+                    <div class="py-2.5 px-4 text-xs font-medium vlx-text-secondary vlx-surface-raised">
                         Notifications
                     </div>
-                    <div class="divide-y divide-gray-100 dark:divide-gray-700 max-h-80 overflow-y-auto">
+                    <div class="divide-y divide-black/6 dark:divide-white/8 max-h-80 overflow-y-auto">
                         @forelse ($notifications as $notification)
-                            <a href="{{ $notification['url'] ?? '#' }}" class="flex gap-3 py-3 px-4 hover:bg-gray-50 dark:hover:bg-gray-700/60">
-                                <span class="shrink-0 mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary-500/15 text-primary-600 dark:text-primary-400 font-mono text-xs font-bold">
+                            <a href="{{ $notification['url'] ?? '#' }}" class="flex gap-3 py-3 px-4 hover:bg-black/[0.03] dark:hover:bg-white/[0.03] transition-colors duration-150">
+                                <span class="shrink-0 mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-lg vlx-surface-raised border vlx-border font-mono text-xs tabular-nums font-medium vlx-text-primary">
                                     {{ $notification['badge'] ?? 'AI' }}
                                 </span>
                                 <div class="w-full min-w-0">
-                                    <div class="text-gray-600 font-normal text-sm mb-1 dark:text-gray-300">
-                                        <span class="font-semibold text-gray-900 dark:text-white">{{ $notification['title'] }}</span>
+                                    <div class="text-sm vlx-text-secondary leading-snug">
+                                        <span class="font-medium vlx-text-primary">{{ $notification['title'] }}</span>
                                         {{ $notification['body'] }}
                                     </div>
-                                    <div class="text-xs font-medium text-primary-600 dark:text-primary-400">
+                                    <div class="mt-1 text-xs vlx-text-muted">
                                         {{ $notification['time'] }}
                                     </div>
                                 </div>
                             </a>
                         @empty
-                            <div class="py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400">
-                                Belum ada notifikasi terbaru.
+                            <div class="py-6 px-4 text-center text-sm vlx-text-muted">
+                                Belum ada notifikasi terbaru
                             </div>
                         @endforelse
                     </div>
                     <a
                         href="{{ route('quizzes.index') }}"
-                        class="block py-2.5 text-sm font-medium text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-900 dark:text-primary-400 dark:hover:underline"
+                        class="block py-2.5 text-xs font-medium text-center text-emerald-700 dark:text-[#4cc38a] vlx-surface-raised hover:underline"
                     >
-                        Lihat AI Assessments &amp; Aktivitas
+                        Lihat AI assessments
                     </a>
                 </div>
             </div>
 
-            <!-- Apps / Platform Pillars -->
+            <!-- Apps / Platform Navigation -->
             <div class="relative">
                 <button
                     type="button"
                     data-dropdown-toggle="apps-dropdown"
                     aria-expanded="false"
-                    class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 focus:ring-2 focus:ring-primary-500/40 cursor-pointer"
+                    class="inline-flex items-center justify-center h-8 w-8 rounded-lg vlx-text-muted hover:vlx-text-primary hover:bg-black/5 dark:hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 transition-colors duration-150 cursor-pointer"
                 >
-                    <span class="sr-only">Open platform modules</span>
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                    <span class="sr-only">Open modules menu</span>
+                    <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"></path>
                     </svg>
                 </button>
 
                 <div
-                    class="hidden absolute right-0 top-full mt-2 w-80 overflow-hidden z-50 text-base list-none bg-white divide-y divide-gray-100 shadow-xl border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:divide-gray-700 rounded-xl"
+                    class="hidden absolute right-0 top-full mt-2 w-72 overflow-hidden z-50 list-none vlx-surface-card divide-y divide-black/6 dark:divide-white/8 shadow-lg border vlx-border rounded-xl"
                     id="apps-dropdown"
                 >
-                    <div class="block py-2.5 px-4 text-sm font-semibold text-center text-gray-700 bg-gray-50 dark:bg-gray-900 dark:text-gray-200">
-                        VELINUX Pillars
+                    <div class="py-2.5 px-4 text-xs font-medium vlx-text-secondary vlx-surface-raised">
+                        Workspace shortcuts
                     </div>
-                    <div class="grid grid-cols-3 gap-2 p-3">
-                        <a href="{{ route('courses.index') }}" class="block p-3 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/70 group">
-                            <span class="mx-auto mb-1 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500/15 text-primary-500">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path></svg>
-                            </span>
-                            <div class="text-xs font-medium text-gray-900 dark:text-white">Modules</div>
-                        </a>
-                        <a href="{{ route('quizzes.index') }}" class="block p-3 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/70 group">
-                            <span class="mx-auto mb-1 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500/15 text-sky-400">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>
-                            </span>
-                            <div class="text-xs font-medium text-gray-900 dark:text-white">Cyber Quiz</div>
-                        </a>
-                        <a href="{{ route('labs.index') }}" class="block p-3 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/70 group">
-                            <span class="mx-auto mb-1 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-400">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                            </span>
-                            <div class="text-xs font-medium text-gray-900 dark:text-white">Cyber Lab</div>
-                        </a>
-                        <a href="{{ route('quizzes.index') }}#ai-feedback" class="block p-3 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/70 group">
-                            <span class="mx-auto mb-1 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-purple-500/15 text-purple-400">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M13 7H7v6h6V7z"></path><path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2z" clip-rule="evenodd"></path></svg>
-                            </span>
-                            <div class="text-xs font-medium text-gray-900 dark:text-white">AI Eval</div>
-                        </a>
-                        <a href="{{ route('leaderboard.index') }}" class="block p-3 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/70 group">
-                            <span class="mx-auto mb-1 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/15 text-amber-400">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                            </span>
-                            <div class="text-xs font-medium text-gray-900 dark:text-white">Ranking</div>
-                        </a>
-                        <a href="{{ route('admin.index') }}" class="block p-3 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/70 group">
-                            <span class="mx-auto mb-1 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-rose-500/15 text-rose-400">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            </span>
-                            <div class="text-xs font-medium text-gray-900 dark:text-white">Mentor</div>
-                        </a>
+                    <div class="grid grid-cols-3 gap-1.5 p-2.5">
+                        @foreach ([
+                            ['route' => route('courses.index'), 'label' => 'Modules'],
+                            ['route' => route('quizzes.index'), 'label' => 'Cyber quiz'],
+                            ['route' => route('labs.index'), 'label' => 'Cyber lab'],
+                            ['route' => route('quizzes.index').'#ai-feedback', 'label' => 'AI eval'],
+                            ['route' => route('leaderboard.index'), 'label' => 'Ranking'],
+                            ['route' => route('admin.index'), 'label' => 'Mentor'],
+                        ] as $shortcut)
+                            <a href="{{ $shortcut['route'] }}" class="flex flex-col items-center justify-center rounded-lg p-2.5 text-center hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors duration-150">
+                                <span class="text-xs font-medium vlx-text-primary">{{ $shortcut['label'] }}</span>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -226,37 +200,37 @@
             <div class="relative">
                 <button
                     type="button"
-                    class="flex items-center gap-2 text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-primary-500/30 cursor-pointer"
+                    class="flex items-center gap-2 rounded-lg p-1 hover:bg-black/5 dark:hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 cursor-pointer"
                     id="user-menu-button"
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown"
                 >
                     <span class="sr-only">Open user menu</span>
-                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-xs font-bold text-white ring-2 ring-primary-400/50">
+                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg vlx-surface-raised border vlx-border text-xs font-mono font-medium vlx-text-primary">
                         {{ $initials !== '' ? $initials : 'VL' }}
                     </span>
                 </button>
 
                 <div
-                    class="hidden absolute right-0 top-full mt-2 z-50 w-60 text-base list-none bg-white divide-y divide-gray-100 shadow-xl border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:divide-gray-700 rounded-xl"
+                    class="hidden absolute right-0 top-full mt-2 z-50 w-60 list-none vlx-surface-card divide-y divide-black/6 dark:divide-white/8 shadow-lg border vlx-border rounded-xl"
                     id="dropdown"
                 >
                     <div class="py-3 px-4">
                         <div class="flex items-center justify-between gap-2">
-                            <span class="block text-sm font-semibold text-gray-900 dark:text-white truncate">{{ $displayName }}</span>
-                            <span class="rounded px-1.5 py-0.5 text-[10px] font-mono font-semibold bg-primary-500/15 text-primary-600 dark:text-primary-400">{{ $displayRole }}</span>
+                            <span class="block text-sm font-medium vlx-text-primary truncate">{{ $displayName }}</span>
+                            <span class="rounded px-1.5 py-0.5 text-[11px] font-mono vlx-surface-raised border vlx-border vlx-text-secondary">{{ $displayRole }}</span>
                         </div>
-                        <span class="block text-xs text-gray-500 truncate dark:text-gray-400 mt-0.5">{{ $displayEmail }}</span>
+                        <span class="block text-xs vlx-text-muted truncate mt-0.5">{{ $displayEmail }}</span>
                     </div>
-                    <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
+                    <ul class="py-1 text-sm vlx-text-secondary" aria-labelledby="dropdown">
                         <li>
-                            <a href="{{ route('dashboard') }}" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Dashboard Overview</a>
+                            <a href="{{ route('dashboard') }}" class="block py-2 px-4 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] hover:vlx-text-primary">Overview</a>
                         </li>
                         <li>
-                            <a href="{{ route('leaderboard.index') }}" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Achievements &amp; XP</a>
+                            <a href="{{ route('leaderboard.index') }}" class="block py-2 px-4 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] hover:vlx-text-primary">Achievements &amp; XP</a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.index') }}" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Mentor &amp; Admin Panel</a>
+                            <a href="{{ route('admin.index') }}" class="block py-2 px-4 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] hover:vlx-text-primary">Mentor &amp; Admin</a>
                         </li>
                     </ul>
                 </div>

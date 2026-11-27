@@ -3,60 +3,56 @@
     'currentUserId' => null,
 ])
 
-<div {{ $attributes->merge(['class' => 'overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 shadow-xs']) }}>
-    <div class="flex items-center justify-between border-b border-gray-200 px-5 py-4 dark:border-gray-800">
-        <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white">Cyber Leaderboard</h3>
-            <p class="text-xs text-gray-500 dark:text-gray-400">Peringkat komunitas VELINUX berdasarkan XP &amp; konsistensi streak</p>
-        </div>
-        <a href="{{ route('leaderboard.index') }}" class="text-xs font-semibold text-primary-600 dark:text-primary-400 hover:underline">
-            Lihat Semua
+<div {{ $attributes->merge(['class' => 'overflow-hidden rounded-xl border vlx-border vlx-surface-card']) }}>
+    <div class="flex items-center justify-between border-b vlx-border px-5 py-3.5">
+        <h3 class="text-base font-medium vlx-text-primary">Cyber Leaderboard</h3>
+        <a href="{{ route('leaderboard.index') }}" class="text-xs font-medium text-emerald-700 dark:text-[#4cc38a] hover:underline">
+            Lihat semua
         </a>
     </div>
 
     <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
-            <thead class="bg-gray-50 text-xs font-mono uppercase text-gray-500 dark:bg-gray-950/60 dark:text-gray-400">
+            <thead class="vlx-surface-raised text-xs font-mono vlx-text-muted border-b vlx-border">
                 <tr>
-                    <th class="px-4 py-3">#</th>
-                    <th class="px-4 py-3">Learner</th>
-                    <th class="px-4 py-3">Rank</th>
-                    <th class="px-4 py-3">Streak</th>
-                    <th class="px-4 py-3 text-right">XP</th>
+                    <th class="px-5 py-2.5 font-medium">#</th>
+                    <th class="px-5 py-2.5 font-medium">Learner</th>
+                    <th class="px-5 py-2.5 font-medium">Tier</th>
+                    <th class="px-5 py-2.5 font-medium">Streak</th>
+                    <th class="px-5 py-2.5 text-right font-medium">XP</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            <tbody class="divide-y divide-black/6 dark:divide-white/8">
                 @forelse ($leaders as $index => $leader)
                     @php
                         $isCurrent = $currentUserId !== null && $leader->id === $currentUserId;
                     @endphp
-                    <tr class="{{ $isCurrent ? 'bg-primary-500/10' : 'hover:bg-gray-50 dark:hover:bg-gray-800/50' }}">
-                        <td class="px-4 py-3 font-mono font-bold text-gray-700 dark:text-gray-300">
+                    <tr class="transition-colors duration-150 {{ $isCurrent ? 'vlx-surface-raised' : 'hover:bg-black/[0.02] dark:hover:bg-white/[0.02]' }}">
+                        <td class="px-5 py-3 font-mono text-xs tabular-nums vlx-text-muted">
                             #{{ $index + 1 }}
                         </td>
-                        <td class="px-4 py-3">
-                            <div class="font-medium text-gray-900 dark:text-white">
-                                {{ $leader->name }}
+                        <td class="px-5 py-3">
+                            <div class="font-medium vlx-text-primary flex items-center gap-2">
+                                <span>{{ $leader->name }}</span>
                                 @if ($isCurrent)
-                                    <span class="ml-1.5 rounded bg-primary-500/20 px-1.5 py-0.5 text-[10px] font-mono text-primary-600 dark:text-primary-300">YOU</span>
+                                    <span class="rounded px-1.5 py-0.5 text-[11px] font-mono text-emerald-700 dark:text-[#4cc38a] bg-emerald-500/8 border border-emerald-600/15 dark:border-[#4cc38a]/20">You</span>
                                 @endif
                             </div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400">{{ $leader->cohort ?? 'VELINUX Member' }}</div>
                         </td>
-                        <td class="px-4 py-3 font-mono text-xs text-gray-600 dark:text-gray-300">
+                        <td class="px-5 py-3 font-mono text-xs vlx-text-secondary">
                             {{ $leader->cyberRank() }}
                         </td>
-                        <td class="px-4 py-3 font-mono text-xs text-amber-600 dark:text-amber-400">
+                        <td class="px-5 py-3 font-mono text-xs tabular-nums vlx-text-secondary">
                             {{ $leader->current_streak }} hari
                         </td>
-                        <td class="px-4 py-3 text-right font-mono font-bold text-primary-600 dark:text-primary-400">
+                        <td class="px-5 py-3 text-right font-mono tabular-nums font-medium text-emerald-700 dark:text-[#4cc38a]">
                             {{ number_format($leader->xp_points) }}
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="px-4 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                            Belum ada data peringkat peserta.
+                        <td colspan="5" class="px-5 py-6 text-center text-sm vlx-text-muted">
+                            Belum ada data peringkat.
                         </td>
                     </tr>
                 @endforelse

@@ -172,7 +172,7 @@ class LabChallengeController extends Controller
         return redirect()
             ->route('labs.index')
             ->with('status', $alreadySolved
-                ? "Flag valid! Challenge {$labChallenge->title} sudah terselesaikan sebelumnya."
-                : "Flag valid! +{$labChallenge->xp_reward} XP ditambahkan ke akun Anda.");
+                ? "Flag valid. Challenge {$labChallenge->title} sudah terselesaikan sebelumnya."
+                : "Flag valid. +{$labChallenge->xp_reward} XP ditambahkan ke akun Anda.");
     }
 }

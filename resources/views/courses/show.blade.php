@@ -1,35 +1,34 @@
 <x-layouts.app :title="$course->title" :user="$learner">
-    <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+    <div class="pb-6 border-b vlx-border flex flex-wrap items-end justify-between gap-4">
         <div>
-            <a href="{{ route('courses.index') }}" class="text-xs font-mono text-primary-600 dark:text-primary-400 hover:underline">
-                &larr; Kembali ke Course Catalog
+            <a href="{{ route('courses.index') }}" class="text-xs font-mono vlx-text-muted hover:vlx-text-primary">
+                &larr; Course catalog
             </a>
-            <h1 class="mt-1 text-2xl font-bold text-gray-900 dark:text-white">{{ $course->title }}</h1>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">{{ $course->description }}</p>
+            <h1 class="mt-2 text-2xl sm:text-[30px] font-medium tracking-[-0.02em] vlx-text-primary">{{ $course->title }}</h1>
+            <p class="text-sm vlx-text-secondary mt-1 max-w-[65ch]">{{ $course->description }}</p>
         </div>
 
-        <div class="rounded-xl border border-primary-500/30 bg-primary-500/10 px-4 py-2.5 text-right">
-            <div class="text-xs font-mono text-gray-500 dark:text-gray-400">Progress Kelas</div>
-            <div class="text-xl font-bold font-mono text-primary-600 dark:text-primary-400">
+        <div class="rounded-xl border vlx-border vlx-surface-card px-4 py-2.5 text-right">
+            <div class="text-xs vlx-text-muted">Progress kelas</div>
+            <div class="text-xl font-medium font-mono tabular-nums text-emerald-700 dark:text-[#4cc38a]">
                 {{ $enrollment?->progress_percentage ?? 0 }}%
             </div>
         </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Daftar Materi & Submateri -->
         <aside class="space-y-4">
-            <div class="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-900">
-                <h2 class="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                    Daftar Modul ({{ $totalLessonsCount }} Materi)
+            <div class="rounded-xl border vlx-border vlx-surface-card p-5">
+                <h2 class="text-sm font-medium vlx-text-primary mb-4">
+                    Daftar modul ({{ $totalLessonsCount }} materi)
                 </h2>
-                <div class="space-y-4">
+                <div class="space-y-5">
                     @foreach ($course->modules as $module)
                         <div>
-                            <div class="text-xs font-mono uppercase tracking-wider text-primary-600 dark:text-primary-400 mb-2">
+                            <div class="text-xs font-mono vlx-text-muted mb-2">
                                 {{ $module->sort_order }}. {{ $module->title }}
                             </div>
-                            <ul class="space-y-1.5">
+                            <ul class="space-y-1">
                                 @foreach ($module->lessons as $lesson)
                                     @php
                                         $isActive = $currentLesson && $currentLesson->id === $lesson->id;
@@ -38,11 +37,11 @@
                                     <li>
                                         <a
                                             href="{{ route('courses.show', ['course' => $course, 'lesson' => $lesson->slug]) }}"
-                                            class="flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-xs font-medium transition {{ $isActive ? 'bg-primary-500/15 text-primary-700 dark:text-primary-300 border border-primary-500/30' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800' }}"
+                                            class="flex items-center justify-between gap-2 rounded-lg px-3 h-9 text-xs font-medium transition-colors duration-150 {{ $isActive ? 'vlx-surface-raised vlx-text-primary border vlx-border' : 'vlx-text-secondary hover:bg-black/[0.03] dark:hover:bg-white/[0.04]' }}"
                                         >
                                             <span class="truncate">{{ $lesson->title }}</span>
                                             @if ($isDone)
-                                                <span class="shrink-0 font-mono text-[10px] text-primary-500">DONE</span>
+                                                <span class="shrink-0 font-mono text-[11px] text-emerald-700 dark:text-[#4cc38a]">Done</span>
                                             @endif
                                         </a>
                                     </li>
@@ -53,46 +52,45 @@
                 </div>
 
                 @if ($course->quizzes->isNotEmpty())
-                    <div class="mt-5 pt-4 border-t border-gray-200 dark:border-gray-800">
+                    <div class="mt-5 pt-4 border-t vlx-border">
                         <a
                             href="{{ route('quizzes.index') }}"
-                            class="flex w-full items-center justify-center rounded-xl bg-primary-500 px-4 py-2.5 text-xs font-semibold text-gray-950 hover:bg-primary-400 transition"
+                            class="flex w-full items-center justify-center h-9 rounded-lg bg-gray-900 text-white hover:bg-gray-800 dark:bg-[#eef0f5] dark:text-[#0b0d14] dark:hover:bg-white px-4 text-xs font-medium active:scale-[0.98] transition-[background-color,transform] duration-150"
                         >
-                            Mulai Assessment Modul &rarr;
+                            Mulai assessment modul
                         </a>
                     </div>
                 @endif
             </div>
         </aside>
 
-        <!-- Konten Pembelajaran -->
         <section class="lg:col-span-2 space-y-6">
             @if ($currentLesson)
-                <article class="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-gray-900">
+                <article class="rounded-xl border vlx-border vlx-surface-card p-6">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                        <span class="rounded-md bg-primary-500/15 px-2.5 py-1 text-xs font-mono font-semibold text-primary-700 dark:text-primary-300">
-                            {{ strtoupper($currentLesson->content_type) }} &middot; +{{ $currentLesson->xp_reward }} XP
+                        <span class="font-mono text-xs tabular-nums vlx-text-muted">
+                            {{ ucfirst($currentLesson->content_type) }} &middot; +{{ $currentLesson->xp_reward }} XP
                         </span>
 
                         <form action="{{ route('courses.lessons.complete', [$course, $currentLesson]) }}" method="POST">
                             @csrf
                             <button
                                 type="submit"
-                                class="rounded-lg border border-primary-500/40 bg-primary-500/10 px-3 py-1.5 text-xs font-semibold text-primary-700 dark:text-primary-300 hover:bg-primary-500/20 transition cursor-pointer"
+                                class="rounded-lg border vlx-border vlx-surface-raised px-3 h-8 text-xs font-medium vlx-text-primary hover:vlx-border-strong active:scale-[0.98] transition-[border-color,transform] duration-150 cursor-pointer"
                             >
-                                {{ in_array($currentLesson->id, $completedLessonIds, true) ? 'Sudah Selesai' : 'Tandai Selesai' }}
+                                {{ in_array($currentLesson->id, $completedLessonIds, true) ? 'Sudah selesai' : 'Tandai selesai' }}
                             </button>
                         </form>
                     </div>
 
-                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">{{ $currentLesson->title }}</h2>
+                    <h2 class="text-xl font-medium vlx-text-primary">{{ $currentLesson->title }}</h2>
 
-                    <div class="mt-4 space-y-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300 whitespace-pre-line">
+                    <div class="mt-4 space-y-3 text-sm leading-relaxed vlx-text-secondary whitespace-pre-line max-w-[65ch]">
                         {{ $currentLesson->content }}
                     </div>
 
                     @if ($currentLesson->code_snippet)
-                        <div class="mt-5">
+                        <div class="mt-6">
                             <x-velinux.terminal-preview
                                 :title="$currentLesson->slug.'.'.($currentLesson->code_language ?? 'txt')"
                                 :code="$currentLesson->code_snippet"
@@ -101,11 +99,11 @@
                         </div>
                     @endif
 
-                    <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-800 flex items-center justify-between gap-3">
+                    <div class="mt-6 pt-4 border-t vlx-border flex items-center justify-between gap-3">
                         @if ($previousLesson)
                             <a
                                 href="{{ route('courses.show', ['course' => $course, 'lesson' => $previousLesson->slug]) }}"
-                                class="rounded-lg border border-gray-300 dark:border-gray-700 px-3.5 py-2 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:border-primary-500/40"
+                                class="rounded-lg border vlx-border vlx-surface-raised px-3.5 h-9 inline-flex items-center text-xs font-medium vlx-text-primary hover:vlx-border-strong"
                             >
                                 &larr; Previous
                             </a>
@@ -116,15 +114,15 @@
                         @if ($nextLesson)
                             <a
                                 href="{{ route('courses.show', ['course' => $course, 'lesson' => $nextLesson->slug]) }}"
-                                class="rounded-lg bg-primary-500 px-3.5 py-2 text-xs font-semibold text-gray-950 hover:bg-primary-400"
+                                class="rounded-lg bg-gray-900 text-white hover:bg-gray-800 dark:bg-[#eef0f5] dark:text-[#0b0d14] dark:hover:bg-white px-3.5 h-9 inline-flex items-center text-xs font-medium"
                             >
-                                Next Lesson &rarr;
+                                Next lesson &rarr;
                             </a>
                         @endif
                     </div>
                 </article>
             @else
-                <div class="rounded-xl border border-dashed border-gray-300 dark:border-gray-700 p-8 text-center text-sm text-gray-500 dark:text-gray-400">
+                <div class="rounded-xl border vlx-border vlx-surface-card p-8 text-center text-sm vlx-text-muted">
                     Belum ada lesson pada course ini.
                 </div>
             @endif

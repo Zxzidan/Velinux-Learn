@@ -22,10 +22,10 @@ enum DifficultyLevel: string
     public function badgeClasses(): string
     {
         return match ($this) {
-            self::Beginner => 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-500/30',
-            self::Intermediate => 'bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300 border border-sky-500/30',
-            self::Advanced => 'bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-500/30',
-            self::Expert => 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-500/30',
+            self::Beginner => 'text-emerald-700 dark:text-[#4cc38a] bg-emerald-500/8 border border-emerald-600/15 dark:border-[#4cc38a]/20',
+            self::Intermediate => 'text-slate-700 dark:text-[#a3a9b8] bg-slate-500/8 border border-slate-500/15 dark:border-white/10',
+            self::Advanced => 'text-amber-700 dark:text-amber-300 bg-amber-500/8 border border-amber-500/20',
+            self::Expert => 'text-rose-700 dark:text-rose-300 bg-rose-500/8 border border-rose-500/20',
         };
     }
 }
