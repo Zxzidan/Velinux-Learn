@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\UserRole;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -26,7 +28,12 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'username' => fake()->unique()->userName(),
             'email' => fake()->unique()->safeEmail(),
+            'cohort' => 'UPN Veteran Jawa Timur - Informatika',
+            'xp_points' => fake()->numberBetween(100, 1500),
+            'current_streak' => fake()->numberBetween(1, 14),
+            'last_activity_date' => now()->toDateString(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
@@ -40,6 +47,16 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    public function withRole(UserRole $userRole): static
+    {
+        return $this->state(fn () => [
+            'role_id' => Role::firstOrCreate(
+                ['slug' => $userRole->value],
+                ['name' => $userRole->label(), 'description' => $userRole->label().' VELINUX']
+            )->id,
         ]);
     }
 }
